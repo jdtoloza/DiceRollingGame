@@ -15,7 +15,7 @@ const diceEL = document.querySelector('.dice')
 const btnRoll = document.querySelector('.btn--roll');
 const btnNew = document.querySelector('.btn--new');
 const btnHold = document.querySelector('.btn--hold');
-const btnNewGame = document.querySelector('.btn--new')
+const btnNewGame = document.querySelectorAll('.btn--new')
 
 let currentScore = 0;
 let activePlayer = 0;
@@ -68,13 +68,16 @@ btnHold.addEventListener('click', function(){
         document.getElementById(`score--${activePlayer}`).textContent = scores[activePlayer];
         
         // 2. Check if player's score is >= 100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= 10) {
         diceEL.classList.add('hidden');
         // Finish the game
         
         playing = false;
         document.querySelector(`.player--${activePlayer}`).classList.add('player--winner');
         document.querySelector(`.player--${activePlayer}`).classList.remove('player--active');
+        document.querySelector('.winning-announcement-window-background').classList.add('active-winner');
+        document.querySelector('.winning-announcement-window').classList.add('active-winner')
+        document.querySelector('.winning-player-anouncement').innerText = `Team ${activePlayer + 1} wins!`
     } else {
         // Switch to the next player.
     switchPlayer()
@@ -85,7 +88,7 @@ btnHold.addEventListener('click', function(){
 
 // Reset Game Functionality
 
-btnNewGame.addEventListener('click', newGame)
+btnNewGame.forEach(x => x.addEventListener('click', newGame))
 
 function newGame() {
         score0EL.textContent = 0;
@@ -99,6 +102,15 @@ function newGame() {
         currentScore = 0;
         player0EL.classList.add('player--active')
         player1EL.classList.remove('player--active')
+        document.querySelector('.winning-announcement-window-background').classList.remove('active-winner');
+        document.querySelector('.winning-announcement-window').classList.remove('active-winner')
+
     
         
     }
+
+
+    // =============================================================
+
+    // Toggle Winning Player
+
