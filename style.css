@@ -187,7 +187,7 @@ main {
   align-items:center;
   opacity:0;
   transition: opacity 1s ease-in-out;
-  cursor:pointer;
+
   
 }
 
@@ -245,13 +245,30 @@ main {
 
 @media (max-width: 620px) {
 
-  .name {
-    font-size:3rem;
+    
+  .btn--new {
+    top:0;
+    left:3rem;
+    font-size:0;
+    padding:1rem;
+    justify-content:center;    
+    border-radius:1rem;
+    font-size:0;
   }
 
-  .player{
-    padding:1rem;
+  .current {
+    width: 150px;
   }
+
+  .name {
+    font-size:2.5rem;
+  }
+
+  .score {
+    margin-bottom:0;
+  }
+
+
   .winning-announcement-window{
     width: 300px;
     height:30%;
